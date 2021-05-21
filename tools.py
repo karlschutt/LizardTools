@@ -91,7 +91,7 @@ class lizard_api_downloader():
         self.fail = 0
         if nr_threads >= self.nr_pages:
             nr_threads = self.nr_pages # Voorkomen dat er te veel threads zijn voor het aantal pagina's
-        for thread_nr in range(self.nr_threads):
+        for thread_nr in range(nr_threads):
             time.sleep(1) # Niet downloads te snel tegenlijk laten beginnen
             self.threads.append(threading.Thread(target=self.download, args=[], daemon = True)) 
             self.threads[thread_nr].start()
@@ -99,7 +99,7 @@ class lizard_api_downloader():
         while self.page != self.nr_pages:
             continue 
             
-        for thread_nr in range(self.nr_threads):
+        for thread_nr in range(nr_threads):
             self.threads[thread_nr].join()
             print(self.threads[thread_nr])
             
@@ -188,7 +188,7 @@ class lizard_timeseries_downloader():
         self.fail = 0
         if nr_threads >= self.nr_pages:
             nr_threads = self.nr_pages # Voorkomen dat er te veel threads zijn voor het aantal pagina's
-        for thread_nr in range(self.nr_threads):
+        for thread_nr in range(nr_threads):
             time.sleep(1) # Niet downloads te snel tegenlijk laten beginnen
             self.threads.append(threading.Thread(target=self.download, args=[], daemon = True)) 
             self.threads[thread_nr].start()
@@ -196,7 +196,7 @@ class lizard_timeseries_downloader():
         while self.page != self.nr_pages:
             continue 
             
-        for thread_nr in range(self.nr_threads):
+        for thread_nr in range(nr_threads):
             self.threads[thread_nr].join()
             print(self.threads[thread_nr])
             
