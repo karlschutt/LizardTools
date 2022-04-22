@@ -94,6 +94,9 @@ class lizard_api_downloader():
         self.fail = 0
         if self.nr_threads >= self.nr_pages:
            self.nr_threads = self.nr_pages 
+        if len(self.proces_input) == 0:
+            self.results = pd.DataFrame()
+            return('No data to download')
         with concurrent.futures.ThreadPoolExecutor(max_workers = self.nr_threads) as executor:
             for result in executor.map(self.download, self.proces_input, repeat(self)):
                 if self.print_log!=False:
@@ -104,7 +107,7 @@ class lizard_api_downloader():
 
         self.results = pd.DataFrame(self.results)
         self.clear() 
-    
+        return('Download succeeded')
  
     def clear(self):
         self.page = 1
@@ -199,7 +202,12 @@ class lizard_timeseries_downloader():
         self.succes = 0
         self.fail = 0
         if self.nr_threads >= self.nr_pages:
-           self.nr_threads = self.nr_pages 
+           self.nr_threads = self.nr_pages
+           
+        if len(self.proces_input) == 0:
+            self.results = pd.DataFrame()
+            return('No data to download')
+        
         with concurrent.futures.ThreadPoolExecutor(max_workers = self.nr_threads) as executor:
             for result in executor.map(self.download, self.proces_input, repeat(self)):
                 if self.print_log!=False:
@@ -216,6 +224,8 @@ class lizard_timeseries_downloader():
 
         # Maak na afloop alles netjes schoon:
         self.clear()   
+        return('Download succeeded')
+
 
     def clear(self):
         self.page = 1
@@ -289,13 +299,17 @@ class lizard_timeseries_poster():
            self.nr_threads = self.nr_chunks 
         if self.print_log != False:
             print(self.nr_threads)
+        if len(self.proces_input) == 0:
+            self.results = pd.DataFrame()
+            return('No data to upload')
         with concurrent.futures.ThreadPoolExecutor(max_workers = self.nr_threads) as executor:
             for result in executor.map(self.upload, self.proces_input, repeat(self)):
                 if self.print_log != False:
                     print(result)
         if self.print_log != False:
             print('Proces finished')
-         
+        return('Upload succeeded')
+            
     def clear(self):
         self.chunk = 0
         self.end = False
