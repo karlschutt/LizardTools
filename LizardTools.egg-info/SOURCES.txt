@@ -1,0 +1,9 @@
+setup.py
+LizardTools/__init__.py
+LizardTools/tools.py
+LizardTools/tools_oud.py
+LizardTools.egg-info/PKG-INFO
+LizardTools.egg-info/SOURCES.txt
+LizardTools.egg-info/dependency_links.txt
+LizardTools.egg-info/requires.txt
+LizardTools.egg-info/top_level.txt
