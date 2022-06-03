@@ -17,7 +17,7 @@ setup(
           description='this package contains useful tools for data exchange with the Lizard api',
           author='',
           packages=find_packages(),
-          install_requires=install_requires=[
+          install_requires=[
           'requests',
 		  'pandas'
 		  ],
