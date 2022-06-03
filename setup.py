@@ -8,7 +8,7 @@ requirementPath = loc + '/requirements.txt'
 install_requires = []
 
 if os.path.isfile(requirementPath):
-    with open(requirementPath) as f:
+    with open(requirementPath, encoding="utf8") as f:
         install_requires = f.read().splitlines()
     
 setup(
