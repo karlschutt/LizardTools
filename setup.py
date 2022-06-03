@@ -3,13 +3,13 @@ from setuptools import setup
 
 import os
 
-loc = os.path.dirname(os.path.realpath(__file__))
-requirementPath = loc + '/requirements.txt'
-install_requires = []
+# loc = os.path.dirname(os.path.realpath(__file__))
+# requirementPath = loc + '/requirements.txt'
+# install_requires = []
 
-if os.path.isfile(requirementPath):
-    with open(requirementPath, encoding="utf8") as f:
-        install_requires = f.read().splitlines()
+# if os.path.isfile(requirementPath):
+    # with open(requirementPath, encoding="utf8") as f:
+        # install_requires = f.read().splitlines()
     
 setup(
           name="LizardTools", 
@@ -17,6 +17,9 @@ setup(
           description='this package contains useful tools for data exchange with the Lizard api',
           author='',
           packages=find_packages(),
-          install_requires=install_requires
+          install_requires=install_requires=[
+          'requests',
+		  'pandas'
+		  ],
           
           )
